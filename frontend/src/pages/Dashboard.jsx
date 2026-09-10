@@ -1,3 +1,4 @@
+import Metrics from "../components/Metrics";
 import Profilebar from "../components/Profilebar";
 import Sidebar from "../components/Sidebar";
 
@@ -11,7 +12,10 @@ const Dashboard = () => {
           <Profilebar />
         </header>
 
-        <main className="p-6 flex-1"></main>
+        <main className="p-6 flex-1">
+          <p className="font-bold text-3xl font-sans">👋🏼 Hello, Akhil Sai </p>
+          <Metrics />
+        </main>
       </div>
     </div>
   );
