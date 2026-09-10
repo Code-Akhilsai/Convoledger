@@ -15,6 +15,22 @@ const Dashboard = () => {
         <main className="p-6 flex-1">
           <p className="font-bold text-3xl font-sans">👋🏼 Hello, Akhil Sai </p>
           <Metrics />
+
+          <section>
+            <p className="font-bold mt-11 text-xl ml-5 text-neutral-900">
+              Recent Conversations
+            </p>
+
+            <div className="h-20 w-100 bg-blue-100 rounded-2xl p-6 shadow-md mt-5">
+              <p>When is the documentations is going submitted?</p>
+            </div>
+            <div className="h-20 w-100 bg-blue-100 rounded-2xl p-6 shadow-md mt-5">
+              <p>When is the documentations is going submitted?</p>
+            </div>
+            <div className="h-20 w-100 bg-blue-100 rounded-2xl p-6 shadow-md mt-5">
+              <p>When is the documentations is going submitted?</p>
+            </div>
+          </section>
         </main>
       </div>
     </div>
