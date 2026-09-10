@@ -25,9 +25,12 @@ const Metrics = () => {
   ];
   return (
     <div className="flex gap-30">
-      {metrics_details.map((metrics) => {
+      {metrics_details.map((metrics, index) => {
         return (
-          <div className=" h-35 w-50  mt-9 ml-8 pr-3 rounded-2xl flex flex-row justify-center items-center gap-5 bg-blue-100 shadow-lg">
+          <div
+            key={index}
+            className=" h-35 w-50  mt-9 ml-8 pr-3 rounded-2xl flex flex-row justify-center items-center gap-5 bg-blue-100 shadow-lg"
+          >
             <div className="bg-blue-200 p-2 rounded-xl">
               <p className="text-3xl text-blue-500">{metrics.icon}</p>
             </div>
