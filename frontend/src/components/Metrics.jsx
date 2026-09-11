@@ -1,50 +1,70 @@
-import { MdOutlineMessage } from "react-icons/md";
-import { FaArrowUp } from "react-icons/fa";
-const Metrics = () => {
-  const metrics_details = [
-    {
-      icon: <MdOutlineMessage />,
-      number: 45,
-      title: "Conversations",
-      profit: 12,
-    },
+import { MdOutlineMessage, MdOutlineLightbulb, MdCheckCircleOutline } from "react-icons/md";
+import { TbCategory } from "react-icons/tb";
 
-    {
-      icon: <MdOutlineMessage />,
-      number: 40,
-      title: "Pending",
-      profit: 10,
-    },
+const Metrics = ({ metrics = {} }) => {
+  const {
+    totalConversations = 0,
+    totalActionItems = 0,
+    totalDecisions = 0,
+    totalTopics = 0,
+  } = metrics;
 
+  const items = [
     {
-      icon: <MdOutlineMessage />,
-      number: 45,
       title: "Conversations",
-      profit: 12,
+      value: totalConversations,
+      icon: <MdOutlineMessage size={24} />,
+      bg: "bg-blue-50 text-blue-600 border-blue-100",
+      iconBg: "bg-blue-100 text-blue-700",
+      subtext: "Total recorded",
+    },
+    {
+      title: "Action Items",
+      value: totalActionItems,
+      icon: <MdCheckCircleOutline size={24} />,
+      bg: "bg-emerald-50 text-emerald-600 border-emerald-100",
+      iconBg: "bg-emerald-100 text-emerald-700",
+      subtext: "Tasks extracted",
+    },
+    {
+      title: "Key Decisions",
+      value: totalDecisions,
+      icon: <MdOutlineLightbulb size={24} />,
+      bg: "bg-amber-50 text-amber-600 border-amber-100",
+      iconBg: "bg-amber-100 text-amber-700",
+      subtext: "Consensus tracked",
+    },
+    {
+      title: "Topics Covered",
+      value: totalTopics,
+      icon: <TbCategory size={24} />,
+      bg: "bg-purple-50 text-purple-600 border-purple-100",
+      iconBg: "bg-purple-100 text-purple-700",
+      subtext: "Knowledge tags",
     },
   ];
+
   return (
-    <div className="flex gap-30">
-      {metrics_details.map((metrics, index) => {
-        return (
-          <div
-            key={index}
-            className=" h-35 w-50  mt-9 ml-8 pr-3 rounded-2xl flex flex-row justify-center items-center gap-5 bg-blue-100 shadow-lg"
-          >
-            <div className="bg-blue-200 p-2 rounded-xl">
-              <p className="text-3xl text-blue-500">{metrics.icon}</p>
-            </div>
-            <div className="flex flex-col  gap-1">
-              <p className="font-bold text-3xl">{metrics.number}</p>
-              <p className="text-neutral-500">{metrics.title}</p>
-              <p className="inline-flex items-center gap-1.5 text-green-600">
-                <FaArrowUp size={16} />
-                <span className="text-xl font-semibold">{metrics.profit}%</span>
-              </p>
-            </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {items.map((item, index) => (
+        <div
+          key={index}
+          className={`p-5 rounded-2xl border bg-white shadow-xs hover:shadow-md transition-all duration-200 flex items-center justify-between gap-4`}
+        >
+          <div className="space-y-1">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              {item.title}
+            </p>
+            <p className="font-extrabold text-3xl text-gray-900 tracking-tight">
+              {item.value}
+            </p>
+            <p className="text-xs text-gray-400 font-medium">{item.subtext}</p>
           </div>
-        );
-      })}
+          <div className={`p-3.5 rounded-2xl ${item.iconBg} shrink-0`}>
+            {item.icon}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
