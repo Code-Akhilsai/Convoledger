@@ -27,7 +27,7 @@ Priya: The top customer request is the AI conversation summary export feature.
 David: We should also prioritize the PDF & TXT batch upload capability.
 John: Let's commit to shipping AI Summaries in Sprint 1 and Batch Upload in Sprint 2.
 Priya: I'll prepare the user stories and Figma specs by tomorrow EOD.
-David: I will start benchmarking Gemini 2.5 Flash for the processing latency.
+David: I will start benchmarking gemini-3.5-flash-lite for the processing latency.
 John: Decision reached: AI summary export is P0 for Sprint 1. David will share benchmark results by Wednesday.`,
   },
 ];
@@ -351,7 +351,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
         {/* Footer Actions */}
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
           <p className="text-xs text-gray-500">
-            Powered by Google Gemini 2.5 Flash
+            Powered by Google gemini-3.5-flash-lite
           </p>
           <div className="flex items-center gap-3">
             <button

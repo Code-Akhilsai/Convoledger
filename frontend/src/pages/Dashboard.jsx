@@ -219,7 +219,7 @@ const Dashboard = () => {
             </h4>
             <div className="space-y-2 text-xs">
               <div className="flex items-center justify-between p-2 rounded-lg bg-green-50 text-green-800">
-                <span className="font-medium">Gemini 2.5 Flash</span>
+                <span className="font-medium">gemini-3.5-flash-lite</span>
                 <span className="font-semibold">Active</span>
               </div>
               <div className="flex items-center justify-between p-2 rounded-lg bg-blue-50 text-blue-800">
