@@ -62,9 +62,7 @@ const Conversations = () => {
 
   // Collect unique topics across conversations
   const allTopics = Array.from(
-    new Set(
-      conversations.flatMap((c) => c.keyTopics || []).filter(Boolean)
-    )
+    new Set(conversations.flatMap((c) => c.keyTopics || []).filter(Boolean)),
   );
 
   const filteredConversations = conversations.filter((c) => {
@@ -85,14 +83,17 @@ const Conversations = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-bold text-3xl text-gray-900 tracking-tight">Conversations</h1>
-          <p className="text-gray-500 mt-1">
-            Upload and analyze your meeting notes, transcripts, and team discussions with Gemini AI.
+          <h1 className="font-bold text-2xl sm:text-3xl text-gray-900 tracking-tight">
+            Conversations
+          </h1>
+          <p className="text-sm sm:text-base text-gray-500 mt-1">
+            Upload and analyze your meeting notes, transcripts, and team
+            discussions with Gemini AI.
           </p>
         </div>
         <button
           onClick={() => setIsUploadOpen(true)}
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer shrink-0"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer shrink-0"
         >
           <FaPlus size={14} />
           <span>New Conversation</span>
@@ -102,27 +103,28 @@ const Conversations = () => {
       {/* Quick Upload Dropzone Banner */}
       <div
         onClick={() => setIsUploadOpen(true)}
-        className="border-2 border-dashed border-purple-200 hover:border-purple-500 transition-all duration-200 rounded-2xl p-6 sm:p-8 text-center bg-gradient-to-br from-purple-50/50 via-white to-blue-50/50 cursor-pointer shadow-xs hover:shadow-md group"
+        className="border-2 border-dashed border-purple-200 hover:border-purple-500 transition-all duration-200 rounded-2xl p-5 sm:p-8 text-center bg-linear-to-br from-purple-50/50 via-white to-blue-50/50 cursor-pointer shadow-xs hover:shadow-md group"
       >
-        <div className="mx-auto w-14 h-14 bg-purple-100 group-hover:bg-purple-200 text-purple-600 rounded-2xl flex items-center justify-center mb-3 transition">
-          <MdOutlineFileUpload size={30} />
+        <div className="mx-auto w-12 sm:w-14 h-12 sm:h-14 bg-purple-100 group-hover:bg-purple-200 text-purple-600 rounded-2xl flex items-center justify-center mb-3 transition">
+          <MdOutlineFileUpload size={28} />
         </div>
-        <h3 className="text-lg font-bold text-gray-800">
+        <h3 className="text-base sm:text-lg font-bold text-gray-800">
           Upload .TXT transcript or paste conversation
         </h3>
-        <p className="text-sm text-gray-500 mt-1 max-w-md mx-auto">
-          Drop your transcript files here or copy-paste text to extract summaries, key decisions, and action items in seconds.
+        <p className="text-xs sm:text-sm text-gray-500 mt-1 max-w-md mx-auto">
+          Drop your transcript files here or copy-paste text to extract
+          summaries, key decisions, and action items in seconds.
         </p>
         <button
           type="button"
-          className="mt-4 px-4 py-2 bg-purple-600 group-hover:bg-purple-700 text-white text-sm font-semibold rounded-xl transition shadow-xs"
+          className="mt-4 px-4 py-2 bg-purple-600 group-hover:bg-purple-700 text-white text-xs sm:text-sm font-semibold rounded-xl transition shadow-xs"
         >
           Start AI Analysis
         </button>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-3 pt-2">
+      <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 pt-2">
         <div className="relative w-full md:w-96">
           <MdOutlineSearch
             size={20}
@@ -133,12 +135,12 @@ const Conversations = () => {
             placeholder="Search by keyword, title, or summary..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 text-sm bg-white rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 shadow-xs transition"
+            className="w-full pl-10 pr-4 py-2.5 text-sm bg-white rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 shadow-xs transition"
           />
         </div>
 
         {allTopics.length > 0 && (
-          <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1">
+          <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1.5 pt-0.5 scrollbar-none">
             <button
               onClick={() => setSelectedTopic("")}
               className={`text-xs px-3 py-1.5 rounded-lg font-medium transition shrink-0 cursor-pointer ${
@@ -149,11 +151,13 @@ const Conversations = () => {
             >
               All Topics
             </button>
-            {allTopics.slice(0, 6).map((topic) => (
+            {allTopics.slice(0, 8).map((topic) => (
               <button
                 key={topic}
-                onClick={() => setSelectedTopic(selectedTopic === topic ? "" : topic)}
-                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition shrink-0 cursor-pointer ${
+                onClick={() =>
+                  setSelectedTopic(selectedTopic === topic ? "" : topic)
+                }
+                className={`text-xs px-3 py-1.5 rounded-lg font-medium transition shrink-0 cursor-pointer whitespace-nowrap ${
                   selectedTopic === topic
                     ? "bg-purple-600 text-white"
                     : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
@@ -249,10 +253,10 @@ const Conversations = () => {
                     setSelectedConversation(conv);
                     setIsDetailOpen(true);
                   }}
-                  className="bg-white border border-gray-200/90 hover:border-purple-300 hover:shadow-md transition-all duration-200 rounded-2xl p-5 shadow-xs cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  className="bg-white border border-gray-200/90 hover:border-purple-300 hover:shadow-md transition-all duration-200 rounded-2xl p-4 sm:p-5 shadow-xs cursor-pointer group flex flex-col md:flex-row md:items-center justify-between gap-4"
                 >
                   <div className="space-y-2 flex-1">
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
                       <div className="p-2 bg-purple-50 text-purple-600 rounded-xl group-hover:bg-purple-600 group-hover:text-white transition">
                         <MdAutoAwesome size={18} />
                       </div>
@@ -264,12 +268,12 @@ const Conversations = () => {
                       </span>
                     </div>
 
-                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed pl-1">
+                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed sm:pl-1">
                       {conv.summary || conv.content?.slice(0, 160) + "..."}
                     </p>
 
                     {/* Metadata Badges */}
-                    <div className="flex flex-wrap items-center gap-2 pt-1 pl-1">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1 sm:pl-1">
                       {conv.decisions?.length > 0 && (
                         <span className="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-800 font-medium px-2.5 py-0.5 rounded-md border border-amber-100">
                           <MdLightbulbOutline size={13} />
@@ -293,7 +297,7 @@ const Conversations = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center md:flex-col items-end justify-between md:justify-center gap-2 shrink-0 border-t md:border-t-0 pt-3 md:pt-0 border-gray-100">
+                  <div className="flex items-center md:flex-col justify-between md:justify-center gap-2 shrink-0 border-t md:border-t-0 pt-3 md:pt-0 border-gray-100">
                     <span className="text-xs bg-green-100 text-green-700 font-semibold px-2.5 py-1 rounded-full">
                       AI Processed
                     </span>
@@ -303,7 +307,7 @@ const Conversations = () => {
                         e.stopPropagation();
                         handleDelete(conv._id);
                       }}
-                      className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
+                      className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition cursor-pointer"
                       title="Delete conversation"
                     >
                       <MdDeleteOutline size={18} />

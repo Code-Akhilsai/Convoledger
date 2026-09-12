@@ -50,20 +50,20 @@ const Tasks = () => {
   return (
     <div className="space-y-6 max-w-5xl mx-auto pb-10">
       <div>
-        <h1 className="font-bold text-3xl text-gray-900 tracking-tight">Action Items & Tasks</h1>
-        <p className="text-gray-500 mt-1">
+        <h1 className="font-bold text-2xl sm:text-3xl text-gray-900 tracking-tight">Action Items & Tasks</h1>
+        <p className="text-sm sm:text-base text-gray-500 mt-1">
           Aggregated actionable tasks extracted from all meetings and conversations.
         </p>
       </div>
 
-      <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-xs flex items-center justify-between">
+      <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Progress</p>
-          <p className="text-2xl font-bold text-gray-900">
+          <p className="text-xl sm:text-2xl font-bold text-gray-900">
             {completedCount} of {allTasks.length} Completed
           </p>
         </div>
-        <div className="w-48 bg-gray-100 rounded-full h-3 overflow-hidden">
+        <div className="w-full sm:w-48 bg-gray-100 rounded-full h-3 overflow-hidden">
           <div
             className="bg-emerald-500 h-full transition-all duration-300"
             style={{
@@ -80,7 +80,7 @@ const Tasks = () => {
           ))}
         </div>
       ) : allTasks.length === 0 ? (
-        <div className="bg-white border border-gray-200 rounded-2xl p-12 text-center text-gray-500">
+        <div className="bg-white border border-gray-200 rounded-2xl p-8 sm:p-12 text-center text-gray-500">
           <MdCheckCircleOutline size={40} className="mx-auto text-gray-300 mb-2" />
           <p className="font-semibold">No action items found.</p>
           <p className="text-xs mt-1">Upload conversations to automatically generate action items.</p>
@@ -93,7 +93,7 @@ const Tasks = () => {
               <div
                 key={task.key}
                 onClick={() => toggleTask(task.key)}
-                className={`p-4 rounded-xl border transition cursor-pointer flex items-start gap-3.5 ${
+                className={`p-3.5 sm:p-4 rounded-xl border transition cursor-pointer flex items-start gap-3.5 ${
                   isDone
                     ? "bg-emerald-50/40 border-emerald-200 text-gray-400"
                     : "bg-white border-gray-200 hover:border-purple-300 text-gray-800 shadow-xs"
@@ -102,11 +102,11 @@ const Tasks = () => {
                 <div className="mt-0.5 text-xl text-emerald-600 shrink-0">
                   {isDone ? <MdCheckCircle /> : <MdRadioButtonUnchecked className="text-gray-400" />}
                 </div>
-                <div className="flex-1 space-y-1">
-                  <p className={`text-sm font-medium ${isDone ? "line-through text-gray-500" : "text-gray-900"}`}>
+                <div className="flex-1 space-y-1 min-w-0">
+                  <p className={`text-sm font-medium leading-relaxed ${isDone ? "line-through text-gray-500" : "text-gray-900"}`}>
                     {task.text}
                   </p>
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-400 truncate">
                     From conversation: <span className="text-purple-600 font-medium">{task.conversationTitle}</span>
                   </p>
                 </div>

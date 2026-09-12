@@ -49,7 +49,7 @@ const Metrics = ({ metrics = {} }) => {
       {items.map((item, index) => (
         <div
           key={index}
-          className={`p-5 rounded-2xl border bg-white shadow-xs hover:shadow-md transition-all duration-200 flex items-center justify-between gap-4`}
+          className={`p-4 sm:p-5 rounded-2xl border bg-white shadow-xs hover:shadow-md transition-all duration-200 flex items-center justify-between gap-4`}
         >
           <div className="space-y-1">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">

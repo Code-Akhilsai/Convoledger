@@ -70,16 +70,17 @@ const Dashboard = () => {
       {/* Header Greeting & Action */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="font-extrabold text-3xl text-gray-900 tracking-tight">
+          <h1 className="font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight">
             👋🏼 Welcome to ConvoLedger
           </h1>
-          <p className="text-gray-500 mt-1">
-            Here is your real-time executive intelligence digest across all meetings & conversations.
+          <p className="text-sm sm:text-base text-gray-500 mt-1">
+            Here is your real-time executive intelligence digest across all
+            meetings & conversations.
           </p>
         </div>
         <button
           onClick={() => setIsUploadOpen(true)}
-          className="flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer shrink-0"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer shrink-0"
         >
           <FaPlus size={14} />
           <span>New Conversation</span>
@@ -126,9 +127,12 @@ const Dashboard = () => {
               <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-full mx-auto flex items-center justify-center">
                 <MdAutoAwesome size={24} />
               </div>
-              <h3 className="font-bold text-gray-800">No conversations analyzed yet</h3>
+              <h3 className="font-bold text-gray-800">
+                No conversations analyzed yet
+              </h3>
               <p className="text-xs text-gray-500 max-w-sm mx-auto">
-                Upload or paste meeting transcripts to automatically extract summaries, decisions, and action items.
+                Upload or paste meeting transcripts to automatically extract
+                summaries, decisions, and action items.
               </p>
               <button
                 onClick={() => setIsUploadOpen(true)}
@@ -154,20 +158,22 @@ const Dashboard = () => {
                       setSelectedConversation(conv);
                       setIsDetailOpen(true);
                     }}
-                    className="bg-white border border-gray-200/80 hover:border-purple-300 hover:shadow-md transition-all duration-200 rounded-2xl p-5 shadow-xs cursor-pointer group"
+                    className="bg-white border border-gray-200/80 hover:border-purple-300 hover:shadow-md transition-all duration-200 rounded-2xl p-4 sm:p-5 shadow-xs cursor-pointer group"
                   >
                     <div className="flex items-start justify-between gap-2">
                       <h4 className="font-bold text-gray-900 group-hover:text-purple-700 transition text-base">
                         {conv.title}
                       </h4>
-                      <span className="text-xs text-gray-400 shrink-0">{dateStr}</span>
+                      <span className="text-xs text-gray-400 shrink-0">
+                        {dateStr}
+                      </span>
                     </div>
 
                     <p className="text-xs text-gray-600 line-clamp-2 mt-2 leading-relaxed">
                       {conv.summary || conv.content?.slice(0, 120)}
                     </p>
 
-                    <div className="flex items-center gap-3 mt-3 pt-3 border-t border-gray-100 text-xs">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 pt-3 border-t border-gray-100 text-xs">
                       {conv.decisions?.length > 0 && (
                         <span className="text-amber-700 font-medium flex items-center gap-1">
                           <MdOutlineLightbulb size={14} />
@@ -195,14 +201,16 @@ const Dashboard = () => {
         <section className="space-y-4">
           <h2 className="font-bold text-xl text-gray-900">Quick Actions</h2>
 
-          <div className="bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white rounded-2xl p-6 shadow-md space-y-4">
+          <div className="bg-linear-to-br from-purple-700 via-indigo-700 to-purple-900 text-white rounded-2xl p-6 shadow-md space-y-4">
             <div className="p-2.5 bg-white/10 w-fit rounded-xl backdrop-blur-xs">
               <MdAutoAwesome size={24} className="text-yellow-300" />
             </div>
             <div>
               <h3 className="font-bold text-lg">AI Transcript Analyzer</h3>
               <p className="text-xs text-purple-100 mt-1 leading-relaxed">
-                Paste meeting transcripts or upload .TXT files. Gemini AI parses key topics, extracts task owners, and logs critical decisions instantly.
+                Paste meeting transcripts or upload .TXT files. Gemini AI parses
+                key topics, extracts task owners, and logs critical decisions
+                instantly.
               </p>
             </div>
             <button
@@ -214,9 +222,7 @@ const Dashboard = () => {
           </div>
 
           <div className="bg-white border border-gray-200/80 rounded-2xl p-5 shadow-xs space-y-3">
-            <h4 className="font-bold text-sm text-gray-900">
-              Workflow Status
-            </h4>
+            <h4 className="font-bold text-sm text-gray-900">Workflow Status</h4>
             <div className="space-y-2 text-xs">
               <div className="flex items-center justify-between p-2 rounded-lg bg-green-50 text-green-800">
                 <span className="font-medium">gemini-3.5-flash-lite</span>

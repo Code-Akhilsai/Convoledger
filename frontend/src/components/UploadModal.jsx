@@ -148,19 +148,19 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-fade-in">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-gray-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-2.5 sm:p-4 animate-fade-in">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[94vh] sm:max-h-[90vh] flex flex-col overflow-hidden border border-gray-100">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gradient-to-r from-purple-50 via-white to-blue-50">
-          <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-purple-600 text-white rounded-xl shadow-md">
-              <MdAutoAwesome size={22} />
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-linear-to-r from-purple-50 via-white to-blue-50">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="p-2 sm:p-2.5 bg-purple-600 text-white rounded-xl shadow-md shrink-0">
+              <MdAutoAwesome size={20} />
             </div>
-            <div>
-              <h2 className="text-xl font-bold text-gray-900">
+            <div className="min-w-0">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
                 New Conversation
               </h2>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-500 truncate">
                 Upload .txt transcript or paste text for Gemini AI analysis
               </p>
             </div>
@@ -168,20 +168,20 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
           <button
             onClick={onClose}
             disabled={isLoading}
-            className="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition"
+            className="p-1.5 sm:p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-lg transition shrink-0 ml-2"
           >
             <MdClose size={22} />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="p-6 overflow-y-auto flex-1 space-y-5">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4 sm:space-y-5">
           {error && (
             <div className="p-3.5 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center justify-between">
               <span>{error}</span>
               <button
                 onClick={() => setError("")}
-                className="text-red-500 font-bold ml-2"
+                className="text-red-500 font-bold ml-2 cursor-pointer"
               >
                 ✕
               </button>
@@ -194,7 +194,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
               type="button"
               disabled={isLoading}
               onClick={() => setActiveTab("paste")}
-              className={`flex-1 py-2 px-3 text-sm font-semibold rounded-lg flex items-center justify-center gap-2 transition cursor-pointer ${
+              className={`flex-1 py-2 px-3 text-xs sm:text-sm font-semibold rounded-lg flex items-center justify-center gap-1.5 sm:gap-2 transition cursor-pointer ${
                 activeTab === "paste"
                   ? "bg-white text-purple-700 shadow-xs"
                   : "text-gray-600 hover:text-gray-900"
@@ -207,7 +207,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
               type="button"
               disabled={isLoading}
               onClick={() => setActiveTab("upload")}
-              className={`flex-1 py-2 px-3 text-sm font-semibold rounded-lg flex items-center justify-center gap-2 transition cursor-pointer ${
+              className={`flex-1 py-2 px-3 text-xs sm:text-sm font-semibold rounded-lg flex items-center justify-center gap-1.5 sm:gap-2 transition cursor-pointer ${
                 activeTab === "upload"
                   ? "bg-white text-purple-700 shadow-xs"
                   : "text-gray-600 hover:text-gray-900"
@@ -229,7 +229,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               disabled={isLoading}
-              className="w-full px-4 py-2.5 text-sm rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition"
+              className="w-full px-3.5 sm:px-4 py-2.5 text-sm rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition"
             />
           </div>
 
@@ -249,7 +249,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
                 onDragLeave={handleDrag}
                 onDrop={handleDrop}
                 onClick={() => fileInputRef.current?.click()}
-                className={`border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition-all ${
+                className={`border-2 border-dashed rounded-2xl p-5 sm:p-6 text-center cursor-pointer transition-all ${
                   dragActive
                     ? "border-purple-600 bg-purple-50/60 scale-[0.99]"
                     : fileName
@@ -257,8 +257,8 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
                       : "border-gray-200 hover:border-purple-400 bg-gray-50/50 hover:bg-purple-50/20"
                 }`}
               >
-                <div className="mx-auto w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-2">
-                  <MdOutlineFileUpload size={26} />
+                <div className="mx-auto w-10 sm:w-12 h-10 sm:h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-2">
+                  <MdOutlineFileUpload size={24} />
                 </div>
                 {fileName ? (
                   <div>
@@ -285,7 +285,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
           )}
 
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="flex flex-wrap items-center justify-between gap-1.5 mb-1.5">
               <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider">
                 Conversation Transcript / Content{" "}
                 <span className="text-red-500">*</span>
@@ -311,23 +311,23 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
               </div>
             </div>
             <textarea
-              rows={7}
+              rows={6}
               placeholder="Paste meeting dialogue, chat logs, customer calls, or discussion notes here..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
               disabled={isLoading}
-              className="w-full px-4 py-3 text-sm font-mono rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition resize-y"
+              className="w-full px-3.5 sm:px-4 py-3 text-sm font-mono rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 transition resize-y"
             />
           </div>
 
           {/* Loading Animation Steps */}
           {isLoading && (
-            <div className="p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-100 space-y-2.5 animate-pulse">
+            <div className="p-4 bg-linear-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-100 space-y-2.5 animate-pulse">
               <div className="flex items-center gap-2 text-purple-700 font-semibold text-sm">
                 <AiOutlineLoading3Quarters className="animate-spin" size={18} />
                 <span>AI Processing Pipeline in progress...</span>
               </div>
-              <div className="grid grid-cols-3 gap-2 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
                 <div
                   className={`p-2 rounded-lg transition ${loadingStep >= 1 ? "bg-purple-200 text-purple-900 font-medium" : "bg-white/60 text-gray-400"}`}
                 >
@@ -349,16 +349,16 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
         </div>
 
         {/* Footer Actions */}
-        <div className="px-6 py-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-          <p className="text-xs text-gray-500">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <p className="text-xs text-gray-500 text-center sm:text-left">
             Powered by Google gemini-3.5-flash-lite
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-end gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={onClose}
               disabled={isLoading}
-              className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 rounded-xl hover:bg-gray-200 transition cursor-pointer"
+              className="flex-1 sm:flex-initial px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 rounded-xl hover:bg-gray-200 transition cursor-pointer text-center"
             >
               Cancel
             </button>
@@ -366,7 +366,7 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
               type="button"
               onClick={handleSubmit}
               disabled={isLoading || !content.trim()}
-              className={`flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl text-white shadow-md transition cursor-pointer ${
+              className={`flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-xl text-white shadow-md transition cursor-pointer ${
                 isLoading || !content.trim()
                   ? "bg-purple-400 cursor-not-allowed"
                   : "bg-purple-600 hover:bg-purple-700 active:scale-98 shadow-purple-200"
