@@ -4,7 +4,6 @@ import {
   MdClose,
   MdContentPaste,
   MdAutoAwesome,
-  MdCheckCircle,
 } from "react-icons/md";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { createConversation } from "../services/api";
