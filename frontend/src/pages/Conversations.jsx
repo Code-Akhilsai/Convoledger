@@ -60,7 +60,6 @@ const Conversations = () => {
     }
   };
 
-  // Collect unique topics across conversations
   const allTopics = Array.from(
     new Set(conversations.flatMap((c) => c.keyTopics || []).filter(Boolean)),
   );
@@ -80,7 +79,6 @@ const Conversations = () => {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto pb-10">
-      {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="font-bold text-2xl sm:text-3xl text-gray-900 tracking-tight">
@@ -100,7 +98,6 @@ const Conversations = () => {
         </button>
       </div>
 
-      {/* Quick Upload Dropzone Banner */}
       <div
         onClick={() => setIsUploadOpen(true)}
         className="border-2 border-dashed border-purple-200 hover:border-purple-500 transition-all duration-200 rounded-2xl p-5 sm:p-8 text-center bg-linear-to-br from-purple-50/50 via-white to-blue-50/50 cursor-pointer shadow-xs hover:shadow-md group"
@@ -123,7 +120,6 @@ const Conversations = () => {
         </button>
       </div>
 
-      {/* Filter and Search Bar */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 pt-2">
         <div className="relative w-full md:w-96">
           <MdOutlineSearch
@@ -170,7 +166,6 @@ const Conversations = () => {
         )}
       </div>
 
-      {/* Conversations List */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
           <h2 className="font-bold text-xl text-gray-900">
@@ -272,7 +267,6 @@ const Conversations = () => {
                       {conv.summary || conv.content?.slice(0, 160) + "..."}
                     </p>
 
-                    {/* Metadata Badges */}
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 pt-1 sm:pl-1">
                       {conv.decisions?.length > 0 && (
                         <span className="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-800 font-medium px-2.5 py-0.5 rounded-md border border-amber-100">
@@ -320,7 +314,6 @@ const Conversations = () => {
         )}
       </section>
 
-      {/* Modals */}
       <UploadModal
         isOpen={isUploadOpen}
         onClose={() => setIsUploadOpen(false)}

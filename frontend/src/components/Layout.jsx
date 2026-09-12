@@ -9,31 +9,25 @@ const Layout = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-50">
-      {/* Desktop Sticky Sidebar */}
       <div className="hidden md:flex h-screen sticky top-0 z-20">
         <Sidebar />
       </div>
 
-      {/* Mobile Drawer Navigation */}
       {isMobileNavOpen && (
         <div className="fixed inset-0 z-50 md:hidden flex">
-          {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/60 backdrop-blur-xs transition-opacity"
             onClick={() => setIsMobileNavOpen(false)}
           />
 
-          {/* Drawer Content */}
           <div className="relative z-10 w-72 max-w-[85vw] h-full shadow-2xl animate-fade-in">
             <Sidebar onClose={() => setIsMobileNavOpen(false)} />
           </div>
         </div>
       )}
 
-      {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between md:justify-end px-4 sm:px-6 shadow-sm sticky top-0 z-10">
-          {/* Mobile Hamburger Button */}
           <div className="flex items-center gap-3 md:hidden">
             <button
               onClick={() => setIsMobileNavOpen(true)}

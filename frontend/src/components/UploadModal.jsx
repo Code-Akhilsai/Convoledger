@@ -32,7 +32,7 @@ John: Decision reached: AI summary export is P0 for Sprint 1. David will share b
 ];
 
 const UploadModal = ({ isOpen, onClose, onSuccess }) => {
-  const [activeTab, setActiveTab] = useState("paste"); // 'paste' | 'upload'
+  const [activeTab, setActiveTab] = useState("paste");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [fileName, setFileName] = useState("");
@@ -125,7 +125,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
         setIsLoading(false);
         onSuccess(result.conversation);
         onClose();
-        // Reset state
         setTitle("");
         setContent("");
         setFileName("");
@@ -149,7 +148,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-2.5 sm:p-4 animate-fade-in">
       <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[94vh] sm:max-h-[90vh] flex flex-col overflow-hidden border border-gray-100">
-        {/* Header */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-gray-100 bg-linear-to-r from-purple-50 via-white to-blue-50">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="p-2 sm:p-2.5 bg-purple-600 text-white rounded-xl shadow-md shrink-0">
@@ -173,7 +171,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
           </button>
         </div>
 
-        {/* Content Body */}
         <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4 sm:space-y-5">
           {error && (
             <div className="p-3.5 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center justify-between">
@@ -187,7 +184,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
             </div>
           )}
 
-          {/* Mode Tabs */}
           <div className="flex gap-2 p-1 bg-gray-100 rounded-xl">
             <button
               type="button"
@@ -217,7 +213,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
             </button>
           </div>
 
-          {/* Form Fields */}
           <div>
             <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
               Conversation Title (Optional)
@@ -319,7 +314,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
             />
           </div>
 
-          {/* Loading Animation Steps */}
           {isLoading && (
             <div className="p-4 bg-linear-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-100 space-y-2.5 animate-pulse">
               <div className="flex items-center gap-2 text-purple-700 font-semibold text-sm">
@@ -347,7 +341,6 @@ const UploadModal = ({ isOpen, onClose, onSuccess }) => {
           )}
         </div>
 
-        {/* Footer Actions */}
         <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <p className="text-xs text-gray-500 text-center sm:text-left">
             Powered by Google gemini-3.5-flash-lite

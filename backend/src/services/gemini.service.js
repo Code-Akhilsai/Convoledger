@@ -50,7 +50,6 @@ Please return a valid JSON object ONLY (no markdown backticks, no preamble, just
 
       const responseText = response.text?.trim() || "";
       if (responseText) {
-        // Clean markdown code fence if present
         const cleanedText = responseText
           .replace(/^```json\s*/i, "")
           .replace(/\s*```$/i, "")
@@ -79,13 +78,9 @@ Please return a valid JSON object ONLY (no markdown backticks, no preamble, just
     );
   }
 
-  // Resilient heuristic analysis fallback when API key is missing or errored
   return generateHeuristicAnalysis(content, providedTitle);
 };
 
-/**
- * Intelligent heuristic fallback parser if API key is not configured
- */
 function generateHeuristicAnalysis(content, providedTitle) {
   const lines = content
     .split("\n")
@@ -131,7 +126,6 @@ function generateHeuristicAnalysis(content, providedTitle) {
     }
   });
 
-  // Extract common tech/business topics
   const topicKeywords = [
     "Backend",
     "Frontend",

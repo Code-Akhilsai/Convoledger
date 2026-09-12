@@ -67,7 +67,6 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8 max-w-6xl mx-auto pb-10">
-      {/* Header Greeting & Action */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="font-extrabold text-2xl sm:text-3xl text-gray-900 tracking-tight">
@@ -87,12 +86,9 @@ const Dashboard = () => {
         </button>
       </div>
 
-      {/* Metrics Row */}
       <Metrics metrics={metricsData} />
 
-      {/* 2-Column Main Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left 2 Cols: Recent Conversations */}
         <section className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <h2 className="font-bold text-xl text-gray-900">
@@ -197,7 +193,6 @@ const Dashboard = () => {
           )}
         </section>
 
-        {/* Right Col: Quick Upload & Intelligence Highlight */}
         <section className="space-y-4">
           <h2 className="font-bold text-xl text-gray-900">Quick Actions</h2>
 
@@ -241,7 +236,6 @@ const Dashboard = () => {
         </section>
       </div>
 
-      {/* Modals */}
       <UploadModal
         isOpen={isUploadOpen}
         onClose={() => setIsUploadOpen(false)}

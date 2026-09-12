@@ -19,7 +19,6 @@ export const createConversation = async (req, res) => {
     const trimmedContent = content.trim();
     const initialTitle = (title && title.trim()) || "Processing Conversation...";
 
-    // 1. Save initial conversation
     const conversation = await Conversation.create({
       title: initialTitle,
       content: trimmedContent,
@@ -30,10 +29,8 @@ export const createConversation = async (req, res) => {
     });
 
     try {
-      // 2. AI analyzes conversation transcript
       const analysis = await analyzeConversation(trimmedContent, title);
 
-      // 3. Update conversation with summary + decisions + actionItems + topics
       conversation.title = analysis.title || conversation.title;
       conversation.summary = analysis.summary || "";
       conversation.decisions = analysis.decisions || [];
@@ -49,7 +46,6 @@ export const createConversation = async (req, res) => {
       });
     } catch (aiError) {
       console.error("AI Analysis error after initial save:", aiError);
-      // Still return the saved conversation even if AI step had a partial issue
       return res.status(201).json({
         success: true,
         message: "Conversation saved, but AI analysis encountered a warning.",

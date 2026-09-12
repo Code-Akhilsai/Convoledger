@@ -43,7 +43,6 @@ const ConversationDetailModal = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs p-2.5 sm:p-4 animate-fade-in">
       <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[94vh] sm:max-h-[92vh] flex flex-col overflow-hidden border border-gray-100">
-        {/* Modal Header */}
         <div className="p-4 sm:p-6 border-b border-gray-100 bg-linear-to-r from-purple-50/70 via-indigo-50/40 to-blue-50/50 flex items-start justify-between">
           <div className="space-y-1.5 max-w-[85%]">
             <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-purple-700 uppercase tracking-wider">
@@ -66,9 +65,7 @@ const ConversationDetailModal = ({
           </button>
         </div>
 
-        {/* Modal Scrollable Body */}
         <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-4 sm:space-y-6">
-          {/* Executive Summary Card */}
           <div className="bg-linear-to-br from-purple-50/60 to-blue-50/60 rounded-2xl p-4 sm:p-5 border border-purple-100/80 shadow-xs">
             <div className="flex items-center gap-2 text-purple-800 font-semibold text-sm mb-2">
               <MdOutlineFormatQuote size={20} className="text-purple-600" />
@@ -79,7 +76,6 @@ const ConversationDetailModal = ({
             </p>
           </div>
 
-          {/* Key Topics Tags */}
           {conversation.keyTopics && conversation.keyTopics.length > 0 && (
             <div>
               <div className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
@@ -99,9 +95,7 @@ const ConversationDetailModal = ({
             </div>
           )}
 
-          {/* Decisions & Action Items 2-Column Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-            {/* Decisions */}
             <div className="bg-amber-50/50 border border-amber-200/70 rounded-2xl p-4 sm:p-5 space-y-3">
               <div className="flex items-center gap-2 text-amber-800 font-bold text-sm">
                 <div className="p-1 bg-amber-100 text-amber-700 rounded-lg">
@@ -129,7 +123,6 @@ const ConversationDetailModal = ({
               )}
             </div>
 
-            {/* Action Items */}
             <div className="bg-emerald-50/50 border border-emerald-200/70 rounded-2xl p-4 sm:p-5 space-y-3">
               <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm">
                 <div className="p-1 bg-emerald-100 text-emerald-700 rounded-lg">
@@ -163,7 +156,6 @@ const ConversationDetailModal = ({
             </div>
           </div>
 
-          {/* Transcript Collapsible Toggle */}
           <div className="border border-gray-200 rounded-2xl overflow-hidden">
             <button
               onClick={() => setShowRawTranscript(!showRawTranscript)}
@@ -187,7 +179,6 @@ const ConversationDetailModal = ({
           </div>
         </div>
 
-        {/* Modal Footer */}
         <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-gray-50 border-t border-gray-100 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <button
             onClick={handleDelete}
