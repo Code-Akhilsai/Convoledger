@@ -14,15 +14,7 @@ import {
 } from "react-icons/md";
 import { IoCheckbox, IoSparkles } from "react-icons/io5";
 import { TbDatabaseFilled, TbArrowUpRight } from "react-icons/tb";
-import {
-  FaSlack,
-  FaGoogle,
-  FaMicrosoft,
-  FaGithub,
-  FaQuoteLeft,
-  FaStar,
-} from "react-icons/fa6";
-import { SiZoom, SiNotion, SiJira } from "react-icons/si";
+import { FaQuoteLeft, FaStar } from "react-icons/fa6";
 import logo from "../assets/logo.png";
 
 const Home = () => {
