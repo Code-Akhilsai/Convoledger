@@ -74,7 +74,7 @@ const Sidebar = ({ onClose }) => {
         </nav>
       </div>
 
-      <div className="px-2 pt-4">
+      <div className="px-2 pt-4 space-y-2">
         <button
           onClick={handleNewConversation}
           className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-blue-600 hover:bg-blue-500 active:scale-98 transition-all rounded-xl text-[16px] font-medium text-white shadow-md cursor-pointer"

@@ -1,10 +1,6 @@
 import { Conversation } from "../models/conversations.model.js";
 import { analyzeConversation } from "../src/services/gemini.service.js";
 
-/**
- * Create a new conversation, save it, analyze with Gemini AI, and update with extracted insights
- * POST /api/conversations
- */
 export const createConversation = async (req, res) => {
   try {
     const { title, content } = req.body;
@@ -26,6 +22,7 @@ export const createConversation = async (req, res) => {
       decisions: [],
       actionItems: [],
       keyTopics: [],
+      userId: req.user?._id,
     });
 
     try {
@@ -45,7 +42,7 @@ export const createConversation = async (req, res) => {
         conversation,
       });
     } catch (aiError) {
-      console.error("AI Analysis error after initial save:", aiError);
+      console.error("AI Analysis warning:", aiError);
       return res.status(201).json({
         success: true,
         message: "Conversation saved, but AI analysis encountered a warning.",
@@ -62,13 +59,13 @@ export const createConversation = async (req, res) => {
   }
 };
 
-/**
- * Get all conversations
- * GET /api/conversations
- */
 export const getAllConversations = async (req, res) => {
   try {
-    const conversations = await Conversation.find().sort({ createdAt: -1 });
+    const filter = req.user
+      ? { $or: [{ userId: req.user._id }, { userId: null }, { userId: { $exists: false } }] }
+      : {};
+
+    const conversations = await Conversation.find(filter).sort({ createdAt: -1 });
     return res.status(200).json({
       success: true,
       count: conversations.length,
@@ -84,10 +81,6 @@ export const getAllConversations = async (req, res) => {
   }
 };
 
-/**
- * Get a single conversation by ID
- * GET /api/conversations/:id
- */
 export const getConversationById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -114,10 +107,6 @@ export const getConversationById = async (req, res) => {
   }
 };
 
-/**
- * Delete conversation by ID
- * DELETE /api/conversations/:id
- */
 export const deleteConversation = async (req, res) => {
   try {
     const { id } = req.params;
@@ -144,13 +133,13 @@ export const deleteConversation = async (req, res) => {
   }
 };
 
-/**
- * Get dashboard metrics and recent activity
- * GET /api/dashboard/metrics
- */
 export const getDashboardMetrics = async (req, res) => {
   try {
-    const conversations = await Conversation.find().sort({ createdAt: -1 });
+    const filter = req.user
+      ? { $or: [{ userId: req.user._id }, { userId: null }, { userId: { $exists: false } }] }
+      : {};
+
+    const conversations = await Conversation.find(filter).sort({ createdAt: -1 });
 
     const totalConversations = conversations.length;
     let totalActionItems = 0;

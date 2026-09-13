@@ -279,13 +279,6 @@ const Home = () => {
                   <MdAutoAwesome className="text-lg" />
                   <span>Explore Dashboard</span>
                 </Link>
-                <Link
-                  to="/conversations"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-100 border border-gray-300 text-gray-800 font-semibold text-base shadow-xs active:scale-98 transition-all cursor-pointer"
-                >
-                  <span>Upload Transcript</span>
-                  <MdArrowForward size={18} />
-                </Link>
               </div>
 
               {/* Small metric proof */}
@@ -438,26 +431,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Integration Logos Bar */}
-      <section className="border-y border-gray-200/80 bg-white/60 py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs sm:text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">
-            Ingest & synchronize conversations seamlessly with your team's stack
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all duration-300">
-            {integrations.map((item) => (
-              <div
-                key={item.name}
-                className="flex items-center gap-2 text-gray-600 hover:text-purple-700 font-semibold text-sm transition"
-              >
-                {item.icon}
-                <span>{item.name}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>

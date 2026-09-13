@@ -9,6 +9,7 @@ import {
   MdArrowForward,
 } from "react-icons/md";
 import logo from "../assets/logo.png";
+import { registerUser } from "../services/api";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -53,31 +54,11 @@ const Register = () => {
     try {
       setLoading(true);
       setError("");
-
-      const API_BASE_URL =
-        import.meta.env.VITE_API_URL || "http://localhost:3000/api";
-      try {
-        const response = await fetch(`${API_BASE_URL}/auth/register`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-          }),
-        });
-        const data = await response.json();
-        if (!response.ok)
-          throw new Error(data.message || "Registration failed");
-        if (data.token) localStorage.setItem("token", data.token);
-        if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
-      } catch {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ name: formData.name, email: formData.email }),
-        );
-      }
-
+      await registerUser({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
       navigate("/dashboard");
     } catch (err) {
       setError(err.message || "Failed to create account. Please try again.");

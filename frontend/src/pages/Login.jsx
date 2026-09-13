@@ -8,6 +8,7 @@ import {
   MdArrowForward,
 } from "react-icons/md";
 import logo from "../assets/logo.png";
+import { loginUser } from "../services/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,33 +32,10 @@ const Login = () => {
     try {
       setLoading(true);
       setError("");
-
-      const API_BASE_URL =
-        import.meta.env.VITE_API_URL || "http://localhost:3000/api";
-      try {
-        const response = await fetch(`${API_BASE_URL}/auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-        const data = await response.json();
-        if (!response.ok)
-          throw new Error(data.message || "Invalid credentials");
-        if (data.token) localStorage.setItem("token", data.token);
-        if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
-      } catch {
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            email: formData.email,
-            name: formData.email.split("@")[0],
-          }),
-        );
-      }
-
+      await loginUser({ email: formData.email, password: formData.password });
       navigate("/dashboard");
     } catch (err) {
-      setError(err.message || "Failed to login. Please try again.");
+      setError(err.message || "Invalid email or password");
     } finally {
       setLoading(false);
     }
