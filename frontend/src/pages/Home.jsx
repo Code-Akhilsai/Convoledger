@@ -162,13 +162,13 @@ const Home = () => {
           {/* Action Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              to="/dashboard"
+              to="/login"
               className="text-sm font-semibold text-gray-700 hover:text-purple-700 px-4 py-2 transition"
             >
               Sign In
             </Link>
             <Link
-              to="/dashboard"
+              to="/register"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-purple-700 hover:bg-purple-800 shadow-md shadow-purple-700/20 active:scale-95 transition-all"
             >
               <span>Get Started</span>
@@ -221,14 +221,14 @@ const Home = () => {
             </nav>
             <div className="pt-3 border-t border-gray-100 flex flex-col gap-3">
               <Link
-                to="/dashboard"
+                to="/login"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center py-2.5 rounded-xl border border-gray-300 font-semibold text-gray-800 hover:bg-gray-50"
               >
                 Sign In
               </Link>
               <Link
-                to="/dashboard"
+                to="/register"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full text-center py-2.5 rounded-xl bg-purple-700 text-white font-semibold shadow-md hover:bg-purple-800"
               >
