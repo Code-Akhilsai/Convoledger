@@ -23,6 +23,10 @@ app.use("/api", router);
 
 connectDB();
 
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "successfull health" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
