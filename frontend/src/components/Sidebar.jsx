@@ -10,7 +10,7 @@ const Sidebar = ({ onClose }) => {
   const navigate = useNavigate();
 
   const navItems = [
-    { name: "Dashboard", path: "/", icon: <TiHome size={22} /> },
+    { name: "Dashboard", path: "/dashboard", icon: <TiHome size={22} /> },
     {
       name: "Conversations",
       path: "/conversations",
