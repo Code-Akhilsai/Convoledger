@@ -8,16 +8,16 @@ import connectDB from "./db/connectDB.js";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT;
 
 app.use(express.json());
+
+app.use(cookieParser());
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "http://localhost:5173",
   }),
 );
-app.use(cookieParser());
-
-const PORT = process.env.PORT;
 
 app.use("/api", router);
 

@@ -1,5 +1,5 @@
 const API_BASE_URL =
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000/api";
+  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");
@@ -10,7 +10,7 @@ const getAuthHeaders = () => {
 };
 
 export async function registerUser({ name, email, password }) {
-  const response = await fetch(`${API_BASE_URL}/auth/register`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password }),
@@ -27,7 +27,7 @@ export async function registerUser({ name, email, password }) {
 }
 
 export async function loginUser({ email, password }) {
-  const response = await fetch(`${API_BASE_URL}/auth/login`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -44,7 +44,7 @@ export async function loginUser({ email, password }) {
 }
 
 export async function fetchCurrentUser() {
-  const response = await fetch(`${API_BASE_URL}/auth/me`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/me`, {
     headers: getAuthHeaders(),
   });
 
@@ -58,7 +58,7 @@ export async function fetchCurrentUser() {
 export function logoutUser() {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
-  fetch(`${API_BASE_URL}/auth/logout`, { method: "POST" }).catch(() => {});
+  fetch(`${API_BASE_URL}/api/auth/logout`, { method: "POST" }).catch(() => {});
 }
 
 export function getCurrentUser() {
@@ -75,7 +75,7 @@ export function isAuthenticated() {
 }
 
 export async function createConversation({ title, content }) {
-  const response = await fetch(`${API_BASE_URL}/conversations`, {
+  const response = await fetch(`${API_BASE_URL}/api/conversations`, {
     method: "POST",
     headers: getAuthHeaders(),
     body: JSON.stringify({ title, content }),
@@ -89,7 +89,7 @@ export async function createConversation({ title, content }) {
 }
 
 export async function fetchConversations() {
-  const response = await fetch(`${API_BASE_URL}/conversations`, {
+  const response = await fetch(`${API_BASE_URL}/api/conversations`, {
     headers: getAuthHeaders(),
   });
   const data = await response.json();
@@ -100,7 +100,7 @@ export async function fetchConversations() {
 }
 
 export async function fetchConversationById(id) {
-  const response = await fetch(`${API_BASE_URL}/conversations/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/conversations/${id}`, {
     headers: getAuthHeaders(),
   });
   const data = await response.json();
@@ -111,7 +111,7 @@ export async function fetchConversationById(id) {
 }
 
 export async function deleteConversation(id) {
-  const response = await fetch(`${API_BASE_URL}/conversations/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/conversations/${id}`, {
     method: "DELETE",
     headers: getAuthHeaders(),
   });
@@ -123,7 +123,7 @@ export async function deleteConversation(id) {
 }
 
 export async function fetchDashboardMetrics() {
-  const response = await fetch(`${API_BASE_URL}/dashboard/metrics`, {
+  const response = await fetch(`${API_BASE_URL}/api/dashboard/metrics`, {
     headers: getAuthHeaders(),
   });
   const data = await response.json();
