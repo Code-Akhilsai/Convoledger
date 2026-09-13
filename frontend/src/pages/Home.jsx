@@ -107,16 +107,6 @@ const Home = () => {
     },
   ];
 
-  const integrations = [
-    { name: "Zoom", icon: <SiZoom className="text-xl" /> },
-    { name: "Google Meet", icon: <FaGoogle className="text-xl" /> },
-    { name: "Microsoft Teams", icon: <FaMicrosoft className="text-xl" /> },
-    { name: "Slack", icon: <FaSlack className="text-xl" /> },
-    { name: "Notion", icon: <SiNotion className="text-xl" /> },
-    { name: "Jira", icon: <SiJira className="text-xl" /> },
-    { name: "GitHub", icon: <FaGithub className="text-xl" /> },
-  ];
-
   return (
     <div className="min-h-screen bg-[#faf9f6] text-gray-900 font-sans antialiased selection:bg-purple-200 selection:text-purple-900">
       {/* Top Navigation */}
